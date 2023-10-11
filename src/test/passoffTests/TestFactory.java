@@ -26,8 +26,8 @@ public class TestFactory {
     }
 
     public static ChessPosition getNewPosition(Integer row, Integer col){
-        // FIXME
-		return null;
+        IChessPosition temp = new IChessPosition(row, col);
+		return temp;
     }
 
     public static ChessMove getNewMove(ChessPosition startPosition, ChessPosition endPosition, ChessPiece.PieceType promotionPiece){
