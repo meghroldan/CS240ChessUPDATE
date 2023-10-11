@@ -1,5 +1,9 @@
 package chess;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
+
 /**
  * A chessboard that can hold and rearrange chess pieces.
  * 
@@ -7,7 +11,6 @@ package chess;
  * methods.
  */
 public interface ChessBoard {
-
     /**
      * Adds a chess piece to the chessboard
      * 
