@@ -9,7 +9,7 @@ import java.util.Collection;
  * methods.
  */
 public interface ChessGame {
-
+    public TeamColor teamTurn = TeamColor.WHITE;
     /**
      * @return Which team's turn it is
      */
