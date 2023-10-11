@@ -23,6 +23,10 @@ public class IChessBoard implements ChessBoard{
     return myPieces.get(position);
   }
 
+  public void removePiece(ChessPosition pos, ChessPiece pie){
+    myPieces.remove(pos, pie);
+  }
+
   //do once pieces types are set
   @Override
   public void resetBoard() {
