@@ -11,8 +11,8 @@ public class TestFactory {
     //Chess Functions
     //------------------------------------------------------------------------------------------------------------------
     public static ChessBoard getNewBoard(){
-        // FIXME
-		return null;
+        ChessBoard tempBoard = new IChessBoard();
+		return tempBoard;
     }
 
     public static ChessGame getNewGame(){
@@ -21,8 +21,8 @@ public class TestFactory {
     }
 
     public static ChessPiece getNewPiece(ChessGame.TeamColor pieceColor, ChessPiece.PieceType type){
-        // FIXME
-		return null;
+        IChessPiece tempPiece = new IChessPiece(pieceColor, type);
+		return tempPiece;
     }
 
     public static ChessPosition getNewPosition(Integer row, Integer col){

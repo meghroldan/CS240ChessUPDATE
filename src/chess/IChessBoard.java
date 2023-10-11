@@ -1,10 +1,11 @@
 package chess;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
 public class IChessBoard implements ChessBoard{
-  Map<ChessPosition,ChessPiece> myPieces = new TreeMap<ChessPosition,ChessPiece>();
+  Map<IChessPosition,IChessPiece> myPieces = new HashMap<IChessPosition,IChessPiece>();
 
   /**
    * Adds a chess piece to the chessboard
@@ -14,7 +15,7 @@ public class IChessBoard implements ChessBoard{
    */
   @Override
   public void addPiece(ChessPosition position, ChessPiece piece){
-    myPieces.put(position, piece);
+    myPieces.put((IChessPosition) position, (IChessPiece) piece);
   }
 
   @Override
