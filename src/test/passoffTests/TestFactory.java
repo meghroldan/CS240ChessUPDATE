@@ -31,8 +31,8 @@ public class TestFactory {
     }
 
     public static ChessMove getNewMove(ChessPosition startPosition, ChessPosition endPosition, ChessPiece.PieceType promotionPiece){
-        // FIXME
-		return null;
+        IChessMove tempMove = new IChessMove(startPosition, endPosition, promotionPiece);
+		return tempMove;
     }
     //------------------------------------------------------------------------------------------------------------------
 
