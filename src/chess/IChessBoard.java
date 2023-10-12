@@ -5,7 +5,11 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class IChessBoard implements ChessBoard{
-  Map<ChessPosition,ChessPiece> myPieces = new HashMap<ChessPosition,ChessPiece>();
+  private Map<ChessPosition,ChessPiece> myPieces = new HashMap<ChessPosition,ChessPiece>();
+
+  public Map<ChessPosition, ChessPiece> getMyPieces(){
+    return myPieces;
+  }
 
   /**
    * Adds a chess piece to the chessboard
