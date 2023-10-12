@@ -48,6 +48,11 @@ public class IChessPiece implements ChessPiece{
       return rook.pieceMovesAvailable(board, myPosition);
     }
 
+    QueenMovementRule queen = new QueenMovementRule();
+    if(board.getPiece(myPosition).getPieceType() == PieceType.QUEEN){
+      return queen.pieceMovesAvailable(board, myPosition);
+    }
+
     if(validMovesToMake == null){
       return null;
     }

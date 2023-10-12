@@ -50,8 +50,8 @@ public class BishopMovementRule implements ValidMovements{
     tempRow = row;
     tempCol = col;
     for(int i = col - 1; i >= 1; i--){
+      tempRow++;
       if(tempRow <= 8) {
-        tempRow++;
         tempPos=new IChessPosition(tempRow, i);
         if (board.getPiece(tempPos) != null && board.getPiece(tempPos).getTeamColor() != currColor) {
           tempMov=new IChessMove(myPosition, tempPos, null);
