@@ -53,6 +53,11 @@ public class IChessPiece implements ChessPiece{
       return queen.pieceMovesAvailable(board, myPosition);
     }
 
+    KnightMovementRule knight = new KnightMovementRule();
+    if(board.getPiece(myPosition).getPieceType() == PieceType.KNIGHT){
+      return knight.pieceMovesAvailable(board, myPosition);
+    }
+
     if(validMovesToMake == null){
       return null;
     }
