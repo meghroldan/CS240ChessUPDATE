@@ -25,7 +25,8 @@ public class BishopMovementRule implements ValidMovements{
     //debug this loop
     int tempRow = row;
     int tempCol = col;
-    for(int i = col; i <= 8; i++){
+    for(int i = col + 1; i <= 8; i++){
+      tempRow--;
       if(tempRow >= 1) {
         tempPos=new IChessPosition(tempRow, i);
         if (board.getPiece(tempPos) != null && board.getPiece(tempPos).getTeamColor() != currColor) {
@@ -33,40 +34,46 @@ public class BishopMovementRule implements ValidMovements{
           validMoves2.add(tempMov);
           break;
         }
-        if(board.getPiece(tempPos).getTeamColor() == currColor){
-          break;
+        if(board.getPiece(tempPos) != null) {
+          if (board.getPiece(tempPos).getTeamColor() == currColor) {
+            break;
+          }
         }
         if (board.getPiece(tempPos) == null) {
           tempMov=new IChessMove(myPosition, tempPos, null);
           validMoves2.add(tempMov);
         }
-      } tempRow--;
+      }
 
     }
 
     tempRow = row;
     tempCol = col;
-    for(int i = col; i >= 1; i--){
+    for(int i = col - 1; i >= 1; i--){
       if(tempRow <= 8) {
+        tempRow++;
         tempPos=new IChessPosition(tempRow, i);
         if (board.getPiece(tempPos) != null && board.getPiece(tempPos).getTeamColor() != currColor) {
           tempMov=new IChessMove(myPosition, tempPos, null);
           validMoves2.add(tempMov);
           break;
         }
-        if(board.getPiece(tempPos).getTeamColor() == currColor){
-          break;
+        if(board.getPiece(tempPos) != null) {
+          if (board.getPiece(tempPos).getTeamColor() == currColor) {
+            break;
+          }
         }
         if (board.getPiece(tempPos) == null) {
           tempMov=new IChessMove(myPosition, tempPos, null);
           validMoves2.add(tempMov);
         }
-      }tempRow++;
+      }
     }
 
     tempRow = row;
     tempCol = col;
-    for(int i = row; i >= 1; i--){
+    for(int i = row - 1; i >= 1; i--){
+      tempCol--;
       if(tempCol >= 1) {
         tempPos=new IChessPosition(i, tempCol);
         if (board.getPiece(tempPos) != null && board.getPiece(tempPos).getTeamColor() != currColor) {
@@ -74,20 +81,23 @@ public class BishopMovementRule implements ValidMovements{
           validMoves2.add(tempMov);
           break;
         }
-        if(board.getPiece(tempPos).getTeamColor() == currColor){
-          break;
+        if(board.getPiece(tempPos) != null) {
+          if (board.getPiece(tempPos).getTeamColor() == currColor) {
+            break;
+          }
         }
         if (board.getPiece(tempPos) == null) {
           tempMov=new IChessMove(myPosition, tempPos, null);
           validMoves2.add(tempMov);
         }
-      }tempCol--;
+      }
     }
 
 
     tempRow = row;
     tempCol = col;
-    for(int i = row; i <= 8; i++){
+    for(int i = row + 1; i <= 8; i++){
+      tempCol++;
         if(tempCol <= 8) {
           tempPos=new IChessPosition(i, tempCol);
           if (board.getPiece(tempPos) != null && board.getPiece(tempPos).getTeamColor() != currColor) {
@@ -95,14 +105,16 @@ public class BishopMovementRule implements ValidMovements{
             validMoves2.add(tempMov);
             break;
           }
-          if(board.getPiece(tempPos).getTeamColor() == currColor){
-            break;
+          if(board.getPiece(tempPos) != null) {
+            if (board.getPiece(tempPos).getTeamColor() == currColor) {
+              break;
+            }
           }
           if (board.getPiece(tempPos) == null) {
             tempMov=new IChessMove(myPosition, tempPos, null);
             validMoves2.add(tempMov);
           }
-        }tempCol++;
+        }
     }
 
     if(validMoves2 == null){
