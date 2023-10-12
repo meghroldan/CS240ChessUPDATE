@@ -38,6 +38,11 @@ public class IChessPiece implements ChessPiece{
       return king.pieceMovesAvailable(board, myPosition);
     }
 
+    BishopMovementRule bishop = new BishopMovementRule();
+    if(board.getPiece(myPosition).getPieceType() == PieceType.BISHOP){
+      return bishop.pieceMovesAvailable(board, myPosition);
+    }
+
     if(validMovesToMake == null){
       return null;
     }
