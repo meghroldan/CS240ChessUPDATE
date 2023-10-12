@@ -22,6 +22,10 @@ public class IChessPiece implements ChessPiece{
     return type;
   }
 
+  public void promotePawn(PieceType newType){
+    type = newType;
+  }
+
 
   //decide how to make them move later
   @Override

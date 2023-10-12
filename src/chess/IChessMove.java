@@ -43,7 +43,7 @@ public class IChessMove implements ChessMove{
   //FIX LATER
   @Override
   public ChessPiece.PieceType getPromotionPiece() {
-    return null;
+    return canIt;
   }
 
   public void changeEndPosition(ChessPosition change){

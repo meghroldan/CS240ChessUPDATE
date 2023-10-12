@@ -3,7 +3,14 @@ package chess;
 import java.util.Collection;
 
 public class IChessGame implements ChessGame{
+
+  ChessBoard currBoard = new IChessBoard();
+
   ChessGame.TeamColor turn = TeamColor.WHITE;
+  boolean isBoardValid = true;
+  boolean isInCheck = false;
+  boolean isCheckmate = false;
+  boolean isStalemate = false;
 
   @Override
   public TeamColor getTeamTurn() {
@@ -27,26 +34,26 @@ public class IChessGame implements ChessGame{
 
   @Override
   public boolean isInCheck(TeamColor teamColor) {
-    return false;
+    return isInCheck;
   }
 
   @Override
   public boolean isInCheckmate(TeamColor teamColor) {
-    return false;
+    return isCheckmate;
   }
 
   @Override
   public boolean isInStalemate(TeamColor teamColor) {
-    return false;
+    return isStalemate;
   }
 
   @Override
   public void setBoard(ChessBoard board) {
-
+    currBoard = board;
   }
 
   @Override
   public ChessBoard getBoard() {
-    return null;
+    return currBoard;
   }
 }
