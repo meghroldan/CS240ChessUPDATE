@@ -43,6 +43,11 @@ public class IChessPiece implements ChessPiece{
       return bishop.pieceMovesAvailable(board, myPosition);
     }
 
+    RookMovementRule rook = new RookMovementRule();
+    if(board.getPiece(myPosition).getPieceType() == PieceType.ROOK){
+      return rook.pieceMovesAvailable(board, myPosition);
+    }
+
     if(validMovesToMake == null){
       return null;
     }
