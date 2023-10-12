@@ -58,6 +58,11 @@ public class IChessPiece implements ChessPiece{
       return knight.pieceMovesAvailable(board, myPosition);
     }
 
+    PawnMovementRule pawn = new PawnMovementRule();
+    if(board.getPiece(myPosition).getPieceType() == PieceType.PAWN){
+      return pawn.pieceMovesAvailable(board, myPosition);
+    }
+
     if(validMovesToMake == null){
       return null;
     }
