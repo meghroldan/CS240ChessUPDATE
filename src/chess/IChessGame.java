@@ -10,6 +10,7 @@ import static chess.ChessPiece.PieceType.KING;
 public class IChessGame implements ChessGame{
 
   private ChessBoard currBoard = new IChessBoard();
+  private ChessBoard tempBoard = new IChessBoard((IChessBoard) currBoard);
   private Map<ChessPosition, ChessPiece> pieces;  //this is only to pass through functions to test things - MUST EDIT BOARD
   private Set<ChessMove> validMovesToMake;  //to check only
   private ChessGame.TeamColor turn = TeamColor.WHITE;
@@ -32,11 +33,27 @@ public class IChessGame implements ChessGame{
   @Override
   public Collection<ChessMove> validMoves(ChessPosition startPosition) {
     Set<ChessMove> tempMoves = new HashSet<>();
+    TeamColor color = currBoard.getPiece(startPosition).getTeamColor();
     validMovesToMake =(Set<ChessMove>) currBoard.getMyPieces().get(startPosition).pieceMoves(currBoard, startPosition);
     //make sure the moves are valid for this piece
-    for(ChessMove moveToMake : validMovesToMake){
+    tempBoard = new IChessBoard((IChessBoard) currBoard);
 
+
+    for(ChessMove moveToMake : validMovesToMake){
+      ChessPiece type = tempBoard.getPiece(startPosition);
+      tempBoard.getMyPieces().remove(startPosition);
+      tempBoard.addPiece(moveToMake.getEndPosition(), type);
+      if(!isInCheck(color)){
+        tempMoves.add(moveToMake);
+      }
+      tempBoard.getMyPieces().remove(moveToMake.getEndPosition());
+      tempBoard.addPiece(moveToMake.getStartPosition(), type);
     }
+
+
+
+    validMovesToMake = tempMoves;
+
 
     if(validMovesToMake == null){
       return null;
@@ -61,6 +78,9 @@ public class IChessGame implements ChessGame{
     }
     //check if it can make the move - is the move in this set
     validMovesToMake =(Set<ChessMove>) validMoves(move.getStartPosition());
+   if( !validMovesToMake.contains(move)){
+     throw new InvalidMoveException("not a move");
+   }
 
     //remove piece from play
     if(currBoard.getMyPieces().get(move.getEndPosition()) != null && currBoard.getMyPieces().get(move.getEndPosition()).getTeamColor() != getTeamTurn()){
@@ -107,7 +127,17 @@ public class IChessGame implements ChessGame{
 
   @Override
   public boolean isInCheck(TeamColor teamColor) {
-    pieces = currBoard.getMyPieces();
+    if(tempBoard.getMyPieces().size() == 0){
+      tempBoard = new IChessBoard((IChessBoard) currBoard);
+    }
+    /*
+    if(tempBoard.getMyPieces().size() != currBoard.getMyPieces().size()){
+      tempBoard = new IChessBoard((IChessBoard) currBoard);
+    }
+    //this gets piece partially trapped but not cannot elimate check
+     */
+    pieces = tempBoard.getMyPieces();
+
 
     //get where the king is
     ChessPosition king = null;
@@ -120,7 +150,7 @@ public class IChessGame implements ChessGame{
     Set<ChessMove> opponantMoves = new HashSet<>();
     for(Map.Entry<ChessPosition, ChessPiece> en : pieces.entrySet()){
       if(en.getValue().getTeamColor() != teamColor){
-        opponantMoves =(Set<ChessMove>) currBoard.getPiece(en.getKey()).pieceMoves(currBoard, en.getKey());
+        opponantMoves =(Set<ChessMove>) tempBoard.getPiece(en.getKey()).pieceMoves(tempBoard, en.getKey());
         for(ChessMove move : opponantMoves){
           if(move.getEndPosition().equals(king)){
             return true;
@@ -128,7 +158,7 @@ public class IChessGame implements ChessGame{
         }
       }
     }
-    return isInCheck;
+    return false;
   }
 
   @Override
@@ -138,7 +168,22 @@ public class IChessGame implements ChessGame{
 
   @Override
   public boolean isInStalemate(TeamColor teamColor) {
-    return isStalemate;
+    //double check to make sure i don't want to use the overall temp board
+    ChessBoard temp = new IChessBoard((IChessBoard) currBoard);
+    pieces = temp.getMyPieces();
+
+
+    Set<ChessMove> opponantMoves = new HashSet<>();
+    for(Map.Entry<ChessPosition, ChessPiece> en : pieces.entrySet()) {
+      if (en.getValue().getTeamColor() == teamColor) {
+        //this has to be valid moves only
+        opponantMoves=(Set<ChessMove>) validMoves(en.getKey());
+        if (!opponantMoves.isEmpty()) {
+          return false;
+        }
+      }
+    }
+    return true;
   }
 
   @Override

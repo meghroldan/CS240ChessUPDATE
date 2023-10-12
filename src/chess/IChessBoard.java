@@ -5,6 +5,9 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class IChessBoard implements ChessBoard{
+  public IChessBoard(){
+
+  }
   private Map<ChessPosition,ChessPiece> myPieces = new HashMap<ChessPosition,ChessPiece>();
 
   public Map<ChessPosition, ChessPiece> getMyPieces(){
@@ -20,6 +23,27 @@ public class IChessBoard implements ChessBoard{
   @Override
   public void addPiece(ChessPosition position, ChessPiece piece){
     myPieces.put(position, piece);
+  }
+
+//  @Override
+//  public String toString() {
+//    StringBuilder board = new StringBuilder();
+//    for(Map.Entry<ChessPosition, ChessPiece> entry : this.getMyPieces().entrySet()) {
+//      IChessPosition tempPos = new IChessPosition(entry.getKey().getRow(), entry.getKey().getColumn());
+//      IChessPiece tempPie = new IChessPiece(entry.getValue().getTeamColor(), entry.getValue().getPieceType());
+//      if (tempPie.getPieceType() == ChessPiece.PieceType.KING){
+//        board == "k"
+//      }
+//      board +=
+//    }
+//  }
+
+  public IChessBoard (IChessBoard old){
+    for(Map.Entry<ChessPosition, ChessPiece> entry : old.getMyPieces().entrySet()) {
+      IChessPosition tempPos = new IChessPosition(entry.getKey().getRow(), entry.getKey().getColumn());
+      IChessPiece tempPie = new IChessPiece(entry.getValue().getTeamColor(), entry.getValue().getPieceType());
+      this.myPieces.put(tempPos, tempPie);
+    }
   }
 
   @Override

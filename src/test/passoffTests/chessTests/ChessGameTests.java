@@ -352,6 +352,17 @@ public class ChessGameTests {
 		|R|P|P|n| |P|P|P|
 		| |N|B|Q|K| | |R|
          */
+        //fixme delete this:
+         /*
+        |r|n| |q|k|b| |r|
+		|p| |p|p|p|p|p|p|
+		|b|p| | | | | | |
+		| | | | | | | | |
+		| | | | | | | | |
+		|P| | |B| |N| | |
+		|R|P|P|n| |P|P|P|
+		| |N|B|Q|K| | |R|
+         */
 
         game.makeMove(TestFactory.getNewMove(TestFactory.getNewPosition(1, 8), TestFactory.getNewPosition(1, 7), null));
         game.makeMove(TestFactory.getNewMove(TestFactory.getNewPosition(2, 4), TestFactory.getNewPosition(3, 6), null));
