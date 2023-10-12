@@ -4,7 +4,7 @@ import chess.*;
 
 /**
  * Used for testing your code
- * Add in code using your classes for each method for each FIXME
+ * Add in code using your classes for each method for each
  */
 public class TestFactory {
 
@@ -16,22 +16,22 @@ public class TestFactory {
     }
 
     public static ChessGame getNewGame(){
-        // FIXME
-		return null;
+        ChessGame tempGame = new IChessGame();
+		return tempGame;
     }
 
     public static ChessPiece getNewPiece(ChessGame.TeamColor pieceColor, ChessPiece.PieceType type){
-        IChessPiece tempPiece = new IChessPiece(pieceColor, type);
+        ChessPiece tempPiece = new IChessPiece(pieceColor, type);
 		return tempPiece;
     }
 
     public static ChessPosition getNewPosition(Integer row, Integer col){
-        IChessPosition temp = new IChessPosition(row, col);
-		return temp;
+        ChessPosition tempPosition = new IChessPosition(row, col);
+		return tempPosition;
     }
 
     public static ChessMove getNewMove(ChessPosition startPosition, ChessPosition endPosition, ChessPiece.PieceType promotionPiece){
-        IChessMove tempMove = new IChessMove(startPosition, endPosition, promotionPiece);
+        ChessMove tempMove = new IChessMove(startPosition, endPosition, promotionPiece);
 		return tempMove;
     }
     //------------------------------------------------------------------------------------------------------------------

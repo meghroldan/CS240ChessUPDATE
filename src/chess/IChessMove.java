@@ -1,6 +1,8 @@
 package chess;
 
 
+import java.util.Objects;
+
 public class IChessMove implements ChessMove{
 
 
@@ -23,6 +25,19 @@ public class IChessMove implements ChessMove{
   @Override
   public ChessPosition getEndPosition() {
     return end;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    IChessMove that=(IChessMove) o;
+    return Objects.equals(start, that.start) && Objects.equals(end, that.end) && canIt == that.canIt;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(start, end, canIt);
   }
 
   //FIX LATER
