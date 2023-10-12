@@ -39,6 +39,34 @@ public class IChessGame implements ChessGame{
   //see if valid move and then do it or not
   @Override
   public void makeMove(ChessMove move) throws InvalidMoveException {
+    //is it the right color
+    if(currBoard.getMyPieces().get(move.getStartPosition()).getTeamColor() != getTeamTurn()){
+      InvalidMoveException exceptionN = new InvalidMoveException("Not your turn");
+      throw exceptionN;
+    }
+    //is there a pieces there
+    if(currBoard.getMyPieces().get(move.getStartPosition()) == null){
+      InvalidMoveException exceptionNoPiece = new InvalidMoveException("No piece");
+    }
+    //remove piece from play
+    if(currBoard.getMyPieces().get(move.getEndPosition()) != null && currBoard.getMyPieces().get(move.getEndPosition()).getTeamColor() != getTeamTurn()){
+      ChessPiece.PieceType tempType = currBoard.getMyPieces().get(move.getEndPosition()).getPieceType();
+      currBoard.getMyPieces().remove(move.getEndPosition(), tempType);
+      currBoard.getMyPieces().put(move.getEndPosition(), currBoard.getPiece(move.getStartPosition()));
+      currBoard.getMyPieces().remove(move.getStartPosition(), currBoard.getPiece(move.getStartPosition()));
+    }
+    if(currBoard.getMyPieces().get(move.getEndPosition()) == null){
+      currBoard.getMyPieces().put(move.getEndPosition(), currBoard.getPiece(move.getStartPosition()));
+      currBoard.getMyPieces().remove(move.getStartPosition(), currBoard.getPiece(move.getStartPosition()));
+    }
+
+    //change the turn at end
+    if(getTeamTurn() == TeamColor.WHITE){
+      setTeamTurn(TeamColor.BLACK);
+    }
+    else{
+      setTeamTurn(TeamColor.WHITE);
+    }
 
   }
 
