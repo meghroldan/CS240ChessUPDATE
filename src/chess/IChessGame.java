@@ -29,7 +29,6 @@ public class IChessGame implements ChessGame{
   public Collection<ChessMove> validMoves(ChessPosition startPosition) {
     validMovesToMake = currBoard.getMyPieces().get(startPosition).pieceMoves(currBoard, startPosition);
 
-
     if(validMovesToMake == null){
       return null;
     }

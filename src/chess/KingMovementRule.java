@@ -14,6 +14,7 @@ public class KingMovementRule implements ValidMovements{
   @Override
   public Collection<ChessMove> pieceMovesAvailable(ChessBoard board, ChessPosition myPosition) {
     pieces = board.getMyPieces();
+    ChessGame.TeamColor currColor = board.getPiece(myPosition).getTeamColor();
     int col = myPosition.getColumn();
     int row = myPosition.getRow();
 
@@ -21,50 +22,98 @@ public class KingMovementRule implements ValidMovements{
     ChessMove tempMov;
     if(col + 1 < 9){
       tempPos = new IChessPosition(row, col + 1);
-      tempMov = new IChessMove(myPosition, tempPos, null);
-      validMoves2.add(tempMov);
+      if(board.getPiece(tempPos) != null && board.getPiece(tempPos).getTeamColor() != currColor){
+        tempMov = new IChessMove(myPosition, tempPos, null);
+        validMoves2.add(tempMov);
+      }
+      if(board.getPiece(tempPos) == null){
+        tempMov = new IChessMove(myPosition, tempPos, null);
+        validMoves2.add(tempMov);
+      }
     }
 
     if(row + 1 < 9){
       tempPos = new IChessPosition(row + 1, col);
-      tempMov = new IChessMove(myPosition, tempPos, null);
-      validMoves2.add(tempMov);
+      if(board.getPiece(tempPos) != null && board.getPiece(tempPos).getTeamColor() != currColor){
+        tempMov = new IChessMove(myPosition, tempPos, null);
+        validMoves2.add(tempMov);
+      }
+      if(board.getPiece(tempPos) == null){
+        tempMov = new IChessMove(myPosition, tempPos, null);
+        validMoves2.add(tempMov);
+      }
     }
 
     if(row - 1 >= 1){
       tempPos = new IChessPosition(row - 1, col);
-      tempMov = new IChessMove(myPosition, tempPos, null);
-      validMoves2.add(tempMov);
+      if(board.getPiece(tempPos) != null && board.getPiece(tempPos).getTeamColor() != currColor){
+        tempMov = new IChessMove(myPosition, tempPos, null);
+        validMoves2.add(tempMov);
+      }
+      if(board.getPiece(tempPos) == null){
+        tempMov = new IChessMove(myPosition, tempPos, null);
+        validMoves2.add(tempMov);
+      }
     }
 
     if(col - 1 >= 1){
       tempPos = new IChessPosition(row, col - 1);
-      tempMov = new IChessMove(myPosition, tempPos, null);
-      validMoves2.add(tempMov);
+      if(board.getPiece(tempPos) != null && board.getPiece(tempPos).getTeamColor() != currColor) {
+        tempMov=new IChessMove(myPosition, tempPos, null);
+        validMoves2.add(tempMov);
+      }
+      if(board.getPiece(tempPos) == null){
+        tempMov = new IChessMove(myPosition, tempPos, null);
+        validMoves2.add(tempMov);
+      }
     }
 
     if(col - 1 >= 1  && row - 1 >= 1){
       tempPos = new IChessPosition(row - 1, col - 1);
-      tempMov = new IChessMove(myPosition, tempPos, null);
-      validMoves2.add(tempMov);
+      if(board.getPiece(tempPos) != null && board.getPiece(tempPos).getTeamColor() != currColor){
+        tempMov = new IChessMove(myPosition, tempPos, null);
+        validMoves2.add(tempMov);
+      }
+      if(board.getPiece(tempPos) == null){
+        tempMov = new IChessMove(myPosition, tempPos, null);
+        validMoves2.add(tempMov);
+      }
     }
 
     if(col + 1 < 9  && row + 1 < 9){
       tempPos = new IChessPosition(row + 1, col + 1);
-      tempMov = new IChessMove(myPosition, tempPos, null);
-      validMoves2.add(tempMov);
+      if(board.getPiece(tempPos) != null && board.getPiece(tempPos).getTeamColor() != currColor){
+        tempMov = new IChessMove(myPosition, tempPos, null);
+        validMoves2.add(tempMov);
+      }
+      if(board.getPiece(tempPos) == null){
+        tempMov = new IChessMove(myPosition, tempPos, null);
+        validMoves2.add(tempMov);
+      }
     }
 
     if(col - 1 >= 1  && row + 1 < 9){
       tempPos = new IChessPosition(row + 1, col - 1);
-      tempMov = new IChessMove(myPosition, tempPos, null);
-      validMoves2.add(tempMov);
+      if(board.getPiece(tempPos) != null && board.getPiece(tempPos).getTeamColor() != currColor){
+        tempMov = new IChessMove(myPosition, tempPos, null);
+        validMoves2.add(tempMov);
+      }
+      if(board.getPiece(tempPos) == null){
+        tempMov = new IChessMove(myPosition, tempPos, null);
+        validMoves2.add(tempMov);
+      }
     }
 
     if(col + 1 < 9  && row - 1 >= 1){
       tempPos = new IChessPosition(row - 1, col + 1);
-      tempMov = new IChessMove(myPosition, tempPos, null);
-      validMoves2.add(tempMov);
+      if(board.getPiece(tempPos) != null && board.getPiece(tempPos).getTeamColor() != currColor){
+        tempMov = new IChessMove(myPosition, tempPos, null);
+        validMoves2.add(tempMov);
+      }
+      if(board.getPiece(tempPos) == null){
+        tempMov = new IChessMove(myPosition, tempPos, null);
+        validMoves2.add(tempMov);
+      }
     }
 
     if(validMoves2 == null){
