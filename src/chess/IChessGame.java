@@ -1,13 +1,17 @@
 package chess;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
+
+import static chess.ChessPiece.PieceType.KING;
 
 public class IChessGame implements ChessGame{
 
   private ChessBoard currBoard = new IChessBoard();
   private Map<ChessPosition, ChessPiece> pieces;  //this is only to pass through functions to test things - MUST EDIT BOARD
-  private Collection<ChessMove> validMovesToMake;
+  private Set<ChessMove> validMovesToMake;  //to check only
   private ChessGame.TeamColor turn = TeamColor.WHITE;
   private boolean isBoardValid = true;
   private boolean isInCheck = false;
@@ -27,7 +31,12 @@ public class IChessGame implements ChessGame{
   //set up all classes and return a collection of moves to make
   @Override
   public Collection<ChessMove> validMoves(ChessPosition startPosition) {
-    validMovesToMake = currBoard.getMyPieces().get(startPosition).pieceMoves(currBoard, startPosition);
+    Set<ChessMove> tempMoves = new HashSet<>();
+    validMovesToMake =(Set<ChessMove>) currBoard.getMyPieces().get(startPosition).pieceMoves(currBoard, startPosition);
+    //make sure the moves are valid for this piece
+    for(ChessMove moveToMake : validMovesToMake){
+
+    }
 
     if(validMovesToMake == null){
       return null;
@@ -39,6 +48,7 @@ public class IChessGame implements ChessGame{
   //see if valid move and then do it or not
   @Override
   public void makeMove(ChessMove move) throws InvalidMoveException {
+    ChessPiece.PieceType rightType = currBoard.getPiece(move.getStartPosition()).getPieceType();
     //is it the right color
     if(currBoard.getMyPieces().get(move.getStartPosition()).getTeamColor() != getTeamTurn()){
       InvalidMoveException exceptionN = new InvalidMoveException("Not your turn");
@@ -48,6 +58,9 @@ public class IChessGame implements ChessGame{
     if(currBoard.getMyPieces().get(move.getStartPosition()) == null){
       InvalidMoveException exceptionNoPiece = new InvalidMoveException("No piece");
     }
+    //check if it can make the move - is the move in this set
+    validMovesToMake =(Set<ChessMove>) validMoves(move.getStartPosition());
+
     //remove piece from play
     if(currBoard.getMyPieces().get(move.getEndPosition()) != null && currBoard.getMyPieces().get(move.getEndPosition()).getTeamColor() != getTeamTurn()){
       ChessPiece.PieceType tempType = currBoard.getMyPieces().get(move.getEndPosition()).getPieceType();
@@ -72,6 +85,27 @@ public class IChessGame implements ChessGame{
 
   @Override
   public boolean isInCheck(TeamColor teamColor) {
+    pieces = currBoard.getMyPieces();
+
+    //get where the king is
+    ChessPosition king = null;
+    for(Map.Entry<ChessPosition, ChessPiece> en : pieces.entrySet()){
+      if(en.getValue().getPieceType() == KING && en.getValue().getTeamColor() == teamColor){
+        king = en.getKey();
+      }
+    }
+
+    Set<ChessMove> opponantMoves = new HashSet<>();
+    for(Map.Entry<ChessPosition, ChessPiece> en : pieces.entrySet()){
+      if(en.getValue().getTeamColor() != teamColor){
+        opponantMoves =(Set<ChessMove>) currBoard.getPiece(en.getKey()).pieceMoves(currBoard, en.getKey());
+        for(ChessMove move : opponantMoves){
+          if(move.getEndPosition().equals(king)){
+            return true;
+          }
+        }
+      }
+    }
     return isInCheck;
   }
 
