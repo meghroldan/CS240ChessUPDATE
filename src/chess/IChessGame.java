@@ -65,6 +65,8 @@ public class IChessGame implements ChessGame{
     //remove piece from play
     if(currBoard.getMyPieces().get(move.getEndPosition()) != null && currBoard.getMyPieces().get(move.getEndPosition()).getTeamColor() != getTeamTurn()){
       ChessPiece.PieceType tempType = currBoard.getMyPieces().get(move.getEndPosition()).getPieceType();
+
+      //promote pawn
       if(move.getPromotionPiece() != null){
         ChessPiece toPut = new IChessPiece(color, move.getPromotionPiece());
         currBoard.getMyPieces().remove(move.getEndPosition(), tempType);
@@ -80,6 +82,8 @@ public class IChessGame implements ChessGame{
 
     //move piece without removing piece from play
     if(currBoard.getMyPieces().get(move.getEndPosition()) == null){
+
+      //promote pawn
       if(move.getPromotionPiece() != null){
         ChessPiece toPut = new IChessPiece(color, move.getPromotionPiece());
         currBoard.getMyPieces().put(move.getEndPosition(), toPut);
