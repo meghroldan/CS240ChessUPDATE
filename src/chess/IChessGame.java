@@ -40,6 +40,7 @@ public class IChessGame implements ChessGame{
 
 
       for(ChessMove moveToMake : validMovesToMake){
+        tempBoard = new IChessBoard((IChessBoard) currBoard);
         ChessPiece type = tempBoard.getPiece(startPosition);
         tempBoard.getMyPieces().remove(startPosition);
         tempBoard.addPiece(moveToMake.getEndPosition(), type);
@@ -134,8 +135,10 @@ public class IChessGame implements ChessGame{
     if(tempBoard.getMyPieces().size() != currBoard.getMyPieces().size()){
       tempBoard = new IChessBoard((IChessBoard) currBoard);
     }
-    //this gets piece partially trapped but not cannot elimate check
+
      */
+    //this gets piece partially trapped but not cannot elimate check
+
     pieces = tempBoard.getMyPieces();
 
 
