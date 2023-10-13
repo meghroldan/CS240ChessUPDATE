@@ -33,18 +33,18 @@ public class IChessGame implements ChessGame{
   @Override
   public Collection<ChessMove> validMoves(ChessPosition startPosition) {
     Set<ChessMove> tempMoves = new HashSet<>();
-    TeamColor color = currBoard.getPiece(startPosition).getTeamColor();
-    validMovesToMake =(Set<ChessMove>) currBoard.getMyPieces().get(startPosition).pieceMoves(currBoard, startPosition);
-    //make sure the moves are valid for this piece
-    tempBoard = new IChessBoard((IChessBoard) currBoard);
+      TeamColor color = currBoard.getPiece(startPosition).getTeamColor();
+      validMovesToMake =(Set<ChessMove>) currBoard.getMyPieces().get(startPosition).pieceMoves(currBoard, startPosition);
+      //make sure the moves are valid for this piece
+      tempBoard = new IChessBoard((IChessBoard) currBoard);
 
 
-    for(ChessMove moveToMake : validMovesToMake){
-      ChessPiece type = tempBoard.getPiece(startPosition);
-      tempBoard.getMyPieces().remove(startPosition);
-      tempBoard.addPiece(moveToMake.getEndPosition(), type);
-      if(!isInCheck(color)){
-        tempMoves.add(moveToMake);
+      for(ChessMove moveToMake : validMovesToMake){
+        ChessPiece type = tempBoard.getPiece(startPosition);
+        tempBoard.getMyPieces().remove(startPosition);
+        tempBoard.addPiece(moveToMake.getEndPosition(), type);
+        if(!isInCheck(color)){
+          tempMoves.add(moveToMake);
       }
       tempBoard.getMyPieces().remove(moveToMake.getEndPosition());
       tempBoard.addPiece(moveToMake.getStartPosition(), type);
@@ -163,7 +163,31 @@ public class IChessGame implements ChessGame{
 
   @Override
   public boolean isInCheckmate(TeamColor teamColor) {
-    return isCheckmate;
+    tempBoard = new IChessBoard((IChessBoard) currBoard);
+
+    pieces = tempBoard.getMyPieces();
+    for(Map.Entry<ChessPosition, ChessPiece> en : pieces.entrySet()) {
+      if (en.getValue().getTeamColor() == teamColor) {
+        Set<ChessMove> tempMoves = new HashSet<>();
+        Set<ChessMove> possibleMoves = new HashSet<>();
+        possibleMoves =(Set<ChessMove>) validMoves(en.getKey() );
+        for(ChessMove moveToMake : possibleMoves){
+          ChessPiece type = tempBoard.getPiece(moveToMake.getStartPosition());
+          tempBoard.getMyPieces().remove(moveToMake.getStartPosition());
+          tempBoard.addPiece(moveToMake.getEndPosition(), type);
+          if(!isInCheck(teamColor)){
+            tempMoves.add(moveToMake);
+          }
+          tempBoard.getMyPieces().remove(moveToMake.getEndPosition());
+          tempBoard.addPiece(moveToMake.getStartPosition(), type);
+        }
+        validMovesToMake = tempMoves;
+        if(!validMovesToMake.isEmpty()) {
+          return false;
+        }
+      }
+    }
+    return true;
   }
 
   @Override
