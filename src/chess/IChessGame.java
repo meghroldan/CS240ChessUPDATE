@@ -93,11 +93,13 @@ public class IChessGame implements ChessGame{
         currBoard.getMyPieces().remove(move.getEndPosition(), tempType);
         currBoard.getMyPieces().put(move.getEndPosition(), toPut);
         currBoard.getMyPieces().remove(move.getStartPosition(), currBoard.getPiece(move.getStartPosition()));
+        tempBoard = new IChessBoard((IChessBoard) currBoard);
       }
       else {
         currBoard.getMyPieces().remove(move.getEndPosition(), tempType);
         currBoard.getMyPieces().put(move.getEndPosition(), currBoard.getPiece(move.getStartPosition()));
         currBoard.getMyPieces().remove(move.getStartPosition(), currBoard.getPiece(move.getStartPosition()));
+        tempBoard = new IChessBoard((IChessBoard) currBoard);
       }
     }
 
@@ -109,10 +111,12 @@ public class IChessGame implements ChessGame{
         ChessPiece toPut = new IChessPiece(color, move.getPromotionPiece());
         currBoard.getMyPieces().put(move.getEndPosition(), toPut);
         currBoard.getMyPieces().remove(move.getStartPosition(), currBoard.getPiece(move.getStartPosition()));
+        tempBoard = new IChessBoard((IChessBoard) currBoard);
       }
       else{
         currBoard.getMyPieces().put(move.getEndPosition(), currBoard.getPiece(move.getStartPosition()));
         currBoard.getMyPieces().remove(move.getStartPosition(), currBoard.getPiece(move.getStartPosition()));
+        tempBoard = new IChessBoard((IChessBoard) currBoard);
       }
     }
 

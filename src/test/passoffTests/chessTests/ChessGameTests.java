@@ -359,10 +359,11 @@ public class ChessGameTests {
 		|b|p| | | | | | |
 		| | | | | | | | |
 		| | | | | | | | |
-		|P| | |B| |N| | |
-		|R|P|P|n| |P|P|P|
-		| |N|B|Q|K| | |R|
+		|P| | |B| |n| | |
+		|R|P|P| | |P|P|P|
+		| |N|B|Q|K| |R | |
          */
+        //MADE PROGRESS!!
 
         game.makeMove(TestFactory.getNewMove(TestFactory.getNewPosition(1, 8), TestFactory.getNewPosition(1, 7), null));
         game.makeMove(TestFactory.getNewMove(TestFactory.getNewPosition(2, 4), TestFactory.getNewPosition(3, 6), null));
