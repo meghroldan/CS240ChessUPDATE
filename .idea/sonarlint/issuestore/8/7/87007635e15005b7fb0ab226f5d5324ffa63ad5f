@@ -1,0 +1,18 @@
+
+•
+java:S1192·"~Define a constant instead of duplicating this literal "ChessGame validMoves returned valid moves for a trapped piece" 6 times.(ŞŸşË
+
+java:S1192Ø"rDefine a constant instead of duplicating this literal "White is not in check but isInCheck returned true" 3 times.(šÖÎ„üÿÿÿÿ
+
+java:S1192J"zDefine a constant instead of duplicating this literal "Found piece at end position is not the correct piece type" 8 times.(¼–ÎÂ
+–
+java:S1192F"{Define a constant instead of duplicating this literal "After move, a piece is still present in the start position" 8 times.(ÑÍ‰³şÿÿÿÿ
+„
+java:S1192H"oDefine a constant instead of duplicating this literal "After move, no piece found at the end position" 8 times.(ŠÖæ
+Š
+java:S1192L"tDefine a constant instead of duplicating this literal "Found piece at end position is the wrong team color" 8 times.(İùÜ£
+
+java:S1192á"vDefine a constant instead of duplicating this literal "ChessGame validMoves did not return the correct moves" 5 times.(ŒÕ™
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(êŸø•øÿÿÿÿ
+`
+java:S1134ã"DTake the required action to fix the issue indicated by this comment.(ÖÂŞ½ıÿÿÿÿ

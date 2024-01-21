@@ -1,0 +1,25 @@
+
+n	java:S135"YReduce the total number of break and continue statements in this loop to use at most one.(¥¡±Ï
+n	java:S1352"YReduce the total number of break and continue statements in this loop to use at most one.(Šª¨—
+n	java:S135H"YReduce the total number of break and continue statements in this loop to use at most one.(¯÷ö¼
+m	java:S135^"YReduce the total number of break and continue statements in this loop to use at most one.(ïİ}
+J
+java:S1066%"/Merge this if statement with the enclosing one.(Ò†­åøÿÿÿÿ
+J
+java:S1066;"/Merge this if statement with the enclosing one.(Ò†­åøÿÿÿÿ
+J
+java:S1066Q"/Merge this if statement with the enclosing one.(Ò†­åøÿÿÿÿ
+J
+java:S1066g"/Merge this if statement with the enclosing one.(Ò†­åøÿÿÿÿ
+œ
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÓÉí²ÿÿÿÿÿ
+k
+java:S1450
+"URemove the "pieces" field and declare it as a local variable in the relevant methods.(‚ÂğŞ
+m
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 69 to the 15 allowed.(³ÍæŒşÿÿÿÿ
+A
+java:S1168s"+Return an empty collection instead of null.(¥¹ï
+@
+java:S1068
+"*Remove this unused "pieces" private field.(‚ÂğŞ

@@ -1,0 +1,47 @@
+
+n	java:S135"YReduce the total number of break and continue statements in this loop to use at most one.(¥¡±Ï
+n	java:S1354"YReduce the total number of break and continue statements in this loop to use at most one.(Šª¨—
+n	java:S135J"YReduce the total number of break and continue statements in this loop to use at most one.(¯÷ö¼
+m	java:S135`"YReduce the total number of break and continue statements in this loop to use at most one.(ïİ}
+n	java:S135v"YReduce the total number of break and continue statements in this loop to use at most one.(¥¡±Ï
+o	java:S135"YReduce the total number of break and continue statements in this loop to use at most one.(Šª¨—
+o	java:S135¥"YReduce the total number of break and continue statements in this loop to use at most one.(¯÷ö¼
+n	java:S135½"YReduce the total number of break and continue statements in this loop to use at most one.(ïİ}
+J
+java:S1066'"/Merge this if statement with the enclosing one.(Ò†­åøÿÿÿÿ
+J
+java:S1066="/Merge this if statement with the enclosing one.(Ò†­åøÿÿÿÿ
+J
+java:S1066S"/Merge this if statement with the enclosing one.(Ò†­åøÿÿÿÿ
+J
+java:S1066i"/Merge this if statement with the enclosing one.(Ò†­åøÿÿÿÿ
+K
+java:S1066€"/Merge this if statement with the enclosing one.(Ò†­åøÿÿÿÿ
+K
+java:S1066˜"/Merge this if statement with the enclosing one.(Ò†­åøÿÿÿÿ
+K
+java:S1066¯"/Merge this if statement with the enclosing one.(Ò†­åøÿÿÿÿ
+K
+java:S1066Ç"/Merge this if statement with the enclosing one.(Ò†­åøÿÿÿÿ
+œ
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ë‡äùøÿÿÿÿ
+k
+java:S1450	"URemove the "pieces" field and declare it as a local variable in the relevant methods.(‚ÂğŞ
+n
+java:S3776"SRefactor this method to reduce its Cognitive Complexity from 137 to the 15 allowed.(³ÍæŒşÿÿÿÿ
+P
+java:S1854";Remove this useless assignment to local variable "tempCol".(„îÎ
+P
+java:S1854";Remove this useless assignment to local variable "tempRow".(ò«ò
+V
+java:S1854u";Remove this useless assignment to local variable "tempCol".(ñ·Ğàıÿÿÿÿ
+W
+java:S1854";Remove this useless assignment to local variable "tempCol".(ñ·Ğàıÿÿÿÿ
+W
+java:S1854£";Remove this useless assignment to local variable "tempRow".(ôÎ•éûÿÿÿÿ
+W
+java:S1854»";Remove this useless assignment to local variable "tempRow".(ôÎ•éûÿÿÿÿ
+B
+java:S1168Ó"+Return an empty collection instead of null.(¥¹ï
+@
+java:S1068	"*Remove this unused "pieces" private field.(‚ÂğŞ
