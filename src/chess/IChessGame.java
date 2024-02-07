@@ -56,7 +56,7 @@ public class IChessGame implements ChessGame{
     validMovesToMake = tempMoves;
 
 
-    if(validMovesToMake == null){
+    if(validMovesToMake == null){ //TODO see if we need to do this
       return null;
     }
     return validMovesToMake;
